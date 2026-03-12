@@ -51,7 +51,7 @@ def main() -> None:
 
     summary_path = output_dir / "run_summary.json"
 
-    with open(summary_path, "w") as f:
+    with open(summary_path, "w", encoding="utf-8") as f:
         json.dump(summary, f, indent=4)
 
     print("Run summary written to:", summary_path)
