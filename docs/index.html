@@ -1,11 +1,277 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Financial News Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Financial News Pipeline Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f7fb;
+      color: #2f2f2f;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+
+    h1 {
+      margin-bottom: 8px;
+      color: #4e4471;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-bottom: 28px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+      font-size: 1rem;
+      margin-top: 0;
+      color: #4e4471;
+    }
+
+    .metric {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin: 8px 0 0;
+    }
+
+    .panel {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
+
+    .chart-wrap {
+      position: relative;
+      width: 100%;
+      min-height: 320px;
+    }
+
+    .latest-section h3 {
+      margin-bottom: 8px;
+      color: #4e4471;
+    }
+
+    .latest-section ul {
+      margin-top: 0;
+      padding-left: 20px;
+    }
+
+    .latest-section li {
+      margin-bottom: 8px;
+    }
+
+    .meta {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    a {
+      color: #426eb4;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      color: #666;
+      font-size: 0.95rem;
+    }
+  </style>
 </head>
 <body>
-    <h1>Financial News Dashboard</h1>
-    <p>This page will be generated automatically by the pipeline.</p>
+  <div class="container">
+    <h1>Financial News Pipeline Dashboard</h1>
+    <p class="subtitle">GitHub Pages report generated automatically from the pipeline artifacts.</p>
+
+    <div class="cards">
+      <div class="card">
+        <h2>Last pipeline update</h2>
+        <div class="metric" style="font-size:1.05rem;">2026-03-16T18:53:24.043751+00:00</div>
+      </div>
+      <div class="card">
+        <h2>Articles fetched</h2>
+        <div class="metric">50</div>
+      </div>
+      <div class="card">
+        <h2>New SQL rows</h2>
+        <div class="metric">4</div>
+      </div>
+      <div class="card">
+        <h2>New vectors</h2>
+        <div class="metric">50</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Articles collected per day (last 7 days)</h2>
+      <div class="chart-wrap">
+        <canvas id="articlesChart"></canvas>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Average sentiment score per day</h2>
+      <div class="chart-wrap">
+        <canvas id="avgScoreChart"></canvas>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Sentiment label distribution per day</h2>
+      <div class="chart-wrap">
+        <canvas id="distributionChart"></canvas>
+      </div>
+    </div>
+
+    <div class="panel latest-section">
+      <h2>Latest day details (2026-03-16)</h2>
+<div class='sentiment-group'>
+<h3>Bullish (1)</h3>
+<ul>
+<li><a href='https://www.tradingview.com/symbols/LSX-A14Y6H/ideas/page-41/' target='_blank' rel='noopener noreferrer'>Alphabet Inc. Class C Trade Ideas — LSX:A14Y6H</a> <span class='meta'>— TradingView</span></li>
+</ul>
+</div>
+<div class='sentiment-group'>
+<h3>Neutral (14)</h3>
+<ul>
+<li><a href='https://www.ad-hoc-news.de/boerse/news/ueberblick/qorvo-inc-stock-isin-us74736k1016-faces-semiconductor-headwinds-amid/68691149' target='_blank' rel='noopener noreferrer'>Qorvo Inc. Stock (ISIN: US74736K1016) Faces Semiconductor Headwinds Amid 5G and Defense Shifts</a> <span class='meta'>— AD HOC NEWS</span></li>
+<li><a href='https://www.ad-hoc-news.de/boerse/news/ueberblick/a-pivotal-period-for-the-ishares-msci-world-etf/68691379' target='_blank' rel='noopener noreferrer'>A Pivotal Period for the iShares MSCI World ETF</a> <span class='meta'>— AD HOC NEWS</span></li>
+<li><a href='https://www.ad-hoc-news.de/boerse/news/ueberblick/berkshire-hathaway-inc-stock-isin-us0846701086-faces-post-buffett/68692912' target='_blank' rel='noopener noreferrer'>Berkshire Hathaway Inc Stock (ISIN: US0846701086) Faces Post-Buffett Transition Amid $373B Cash Pile</a> <span class='meta'>— AD HOC NEWS</span></li>
+<li><a href='https://www.marketbeat.com/instant-alerts/filing-ceeto-capital-group-llc-has-7079-million-stock-holdings-in-apple-inc-aapl-2026-03-16/' target='_blank' rel='noopener noreferrer'>Ceeto Capital Group LLC Has $70.79 Million Stock Holdings in Apple Inc. $AAPL</a> <span class='meta'>— MarketBeat</span></li>
+<li><a href='https://www.marketbeat.com/instant-alerts/filing-apple-inc-aapl-stake-reduced-by-calydon-capital-2026-03-16/' target='_blank' rel='noopener noreferrer'>Apple Inc. $AAPL Stake Reduced by Calydon Capital</a> <span class='meta'>— MarketBeat</span></li>
+<li><a href='https://www.marketbeat.com/instant-alerts/filing-clark-capital-management-group-inc-has-38378-million-position-in-apple-inc-aapl-2026-03-16/' target='_blank' rel='noopener noreferrer'>Clark Capital Management Group Inc. Has $383.78 Million Position in Apple Inc. $AAPL</a> <span class='meta'>— MarketBeat</span></li>
+<li><a href='https://www.marketbeat.com/instant-alerts/filing-apple-inc-aapl-is-capitolis-liquid-global-markets-llcs-6th-largest-position-2026-03-16/' target='_blank' rel='noopener noreferrer'>Apple Inc. $AAPL is Capitolis Liquid Global Markets LLC&#39;s 6th Largest Position</a> <span class='meta'>— MarketBeat</span></li>
+<li><a href='https://www.marketbeat.com/instant-alerts/filing-cannell-spears-llc-has-19477-million-stock-holdings-in-apple-inc-aapl-2026-03-16/' target='_blank' rel='noopener noreferrer'>Cannell &amp; Spears LLC Has $194.77 Million Stock Holdings in Apple Inc. $AAPL</a> <span class='meta'>— MarketBeat</span></li>
+</ul>
+</div>
+<div class='sentiment-group'>
+<h3>Somewhat-Bearish (1)</h3>
+<ul>
+<li><a href='https://www.pymnts.com/news/ipo/2026/walmarts-phonepe-says-war-has-halted-ipo-plans/' target='_blank' rel='noopener noreferrer'>Walmart’s PhonePe Says War Has Halted IPO Plans</a> <span class='meta'>— PYMNTS.com</span></li>
+</ul>
+</div>
+<div class='sentiment-group'>
+<h3>Somewhat-Bullish (5)</h3>
+<ul>
+<li><a href='https://www.marketbeat.com/instant-alerts/filing-apple-inc-aapl-stake-lowered-by-boxwood-ventures-inc-2026-03-16/' target='_blank' rel='noopener noreferrer'>Apple Inc. $AAPL Stake Lowered by Boxwood Ventures Inc.</a> <span class='meta'>— MarketBeat</span></li>
+<li><a href='https://www.marketbeat.com/instant-alerts/filing-apple-inc-aapl-shares-purchased-by-fred-alger-management-llc-2026-03-16/' target='_blank' rel='noopener noreferrer'>Apple Inc. $AAPL Shares Purchased by Fred Alger Management LLC</a> <span class='meta'>— MarketBeat</span></li>
+<li><a href='https://www.stocktitan.net/news/AAPL/apple-introduces-air-pods-max-pi32jn7ynrvs.html' target='_blank' rel='noopener noreferrer'>Apple’s AirPods Max 2 boost noise canceling and add live translation</a> <span class='meta'>— Stock Titan</span></li>
+<li><a href='https://seekingalpha.com/article/4882726-microsoft-is-on-sale-5-reasons-to-buy-now' target='_blank' rel='noopener noreferrer'>Microsoft Is On Sale: 5 Reasons To Buy Now (NASDAQ:MSFT)</a> <span class='meta'>— Seeking Alpha</span></li>
+<li><a href='https://www.cnbc.com/2026/03/16/apple-acquires-video-editing-company-motionvfx-to-boost-subscribers.html' target='_blank' rel='noopener noreferrer'>Apple acquires video editing company MotionVFX to boost subscribers</a> <span class='meta'>— CNBC</span></li>
+</ul>
+</div>
+    </div>
+
+    <p class="footer-note">
+      This dashboard is static HTML generated from SQLite and pipeline outputs during GitHub Actions.
+    </p>
+  </div>
+
+  <script>
+    const labels = ["2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-14", "2026-03-15", "2026-03-16"];
+    const articleCounts = [12, 34, 22, 20, 21, 23, 21];
+    const avgScores = [0.0394, 0.1581, 0.2022, 0.1193, 0.1099, 0.1233, 0.0858];
+    const labelCounts = {"Bullish": [1, 3, 6, 0, 1, 0, 1], "Neutral": [5, 11, 9, 11, 8, 11, 14], "Somewhat-Bearish": [3, 5, 1, 1, 4, 1, 1], "Somewhat-Bullish": [3, 15, 6, 8, 8, 11, 5]};
+
+    new Chart(document.getElementById('articlesChart'), {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Articles',
+          data: articleCounts,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('avgScoreChart'), {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Average sentiment score',
+          data: avgScores,
+          tension: 0.25,
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            suggestedMin: -1,
+            suggestedMax: 1
+          }
+        }
+      }
+    });
+
+    const distributionDatasets = Object.keys(labelCounts).map((label) => {
+      return {
+        label: label,
+        data: labelCounts[label],
+        borderWidth: 1
+      };
+    });
+
+    new Chart(document.getElementById('distributionChart'), {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: distributionDatasets
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            stacked: true
+          },
+          y: {
+            stacked: true,
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
 </body>
 </html>
