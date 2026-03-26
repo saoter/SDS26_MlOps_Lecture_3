@@ -113,7 +113,7 @@
     <div class="cards">
       <div class="card">
         <h2>Last pipeline update</h2>
-        <div class="metric" style="font-size:1.05rem;">2026-03-26T13:50:40.089991+00:00</div>
+        <div class="metric" style="font-size:1.05rem;">2026-03-26T15:20:55.883888+00:00</div>
       </div>
       <div class="card">
         <h2>Articles fetched</h2>
@@ -121,7 +121,7 @@
       </div>
       <div class="card">
         <h2>New SQL rows</h2>
-        <div class="metric">4</div>
+        <div class="metric">5</div>
       </div>
       <div class="card">
         <h2>New vectors</h2>
@@ -153,10 +153,24 @@
     <div class="panel latest-section">
       <h2>Latest day details (2026-03-26)</h2>
 <div class='sentiment-group'>
-<h3>Neutral (2)</h3>
+<h3>Bullish (1)</h3>
+<ul>
+<li><a href='https://seekingalpha.com/news/4569262-apple-adds-cirrus-logic-bosch-others-to-american-manufacturing-program' target='_blank' rel='noopener noreferrer'>Apple adds Cirrus Logic, Bosch, others to American Manufacturing Program (AAPL:NASDAQ)</a> <span class='meta'>— Seeking Alpha</span></li>
+</ul>
+</div>
+<div class='sentiment-group'>
+<h3>Neutral (4)</h3>
 <ul>
 <li><a href='https://www.ad-hoc-news.de/boerse/news/ueberblick/lg-display-co-ltd-adr-stock-faces-uncertain-2026-amid-display-panel/68991190' target='_blank' rel='noopener noreferrer'>LG Display Co Ltd (ADR) stock faces uncertain 2026 amid display panel oversupply and weak OLED deman</a> <span class='meta'>— AD HOC NEWS</span></li>
 <li><a href='https://www.marketbeat.com/instant-alerts/filing-tudor-investment-corp-et-al-buys-new-holdings-in-masimo-corporation-masi-2026-03-26/' target='_blank' rel='noopener noreferrer'>Tudor Investment Corp ET AL Buys New Holdings in Masimo Corporation $MASI</a> <span class='meta'>— MarketBeat</span></li>
+<li><a href='https://www.inc.com/jason-aten/sony-is-finally-killing-the-ev-no-one-ever-thought-theyd-actually-ship/91322458' target='_blank' rel='noopener noreferrer'>Sony Is Finally Killing the EV No One Ever Thought They’d Actually Ship</a> <span class='meta'>— Inc.com</span></li>
+<li><a href='https://www.barrons.com/articles/microsoft-stock-worst-6-month-losing-streak-2009-9af7b77f?gaa_at=eafs&amp;gaa_n=AWEtsqeVZ3I1i5D8ydokxoDTms8akiVYLwgd9YTiYfJf6JQLuqSSojux46PR&amp;gaa_ts=69c54f56&amp;gaa_sig=EurITbdquwMBAVhFnnN3qxIqnp9BlUzOs3PSFRFHCNSwY97SZIz1kVggwi49t7QxG_GjfFd5HBninWUxv4OjNQ%3D%3D' target='_blank' rel='noopener noreferrer'>Microsoft Stock Tracking Worst 6-Month Stretch Since 2009</a> <span class='meta'>— Barron&#39;s</span></li>
+</ul>
+</div>
+<div class='sentiment-group'>
+<h3>Somewhat-Bearish (1)</h3>
+<ul>
+<li><a href='https://www.ad-hoc-news.de/boerse/news/ueberblick/navigating-headwinds-three-challenges-confronting-the-ishares-msci-world/68988999' target='_blank' rel='noopener noreferrer'>Navigating Headwinds: Three Challenges Confronting the iShares MSCI World ETF</a> <span class='meta'>— AD HOC NEWS</span></li>
 </ul>
 </div>
 <div class='sentiment-group'>
@@ -176,9 +190,9 @@
 
   <script>
     const labels = ["2026-03-20", "2026-03-21", "2026-03-22", "2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26"];
-    const articleCounts = [28, 22, 19, 60, 34, 28, 5];
-    const avgScores = [0.1368, 0.1894, 0.175, 0.1954, 0.192, 0.1367, 0.1349];
-    const labelCounts = {"Bearish": [0, 1, 0, 1, 0, 0, 0], "Bullish": [1, 3, 4, 10, 6, 4, 0], "Neutral": [12, 6, 8, 20, 13, 12, 2], "Somewhat-Bearish": [2, 0, 1, 2, 1, 3, 0], "Somewhat-Bullish": [13, 12, 6, 27, 14, 9, 3]};
+    const articleCounts = [28, 22, 19, 60, 34, 29, 9];
+    const avgScores = [0.1368, 0.1894, 0.175, 0.1954, 0.192, 0.1467, 0.0737];
+    const labelCounts = {"Bearish": [0, 1, 0, 1, 0, 0, 0], "Bullish": [1, 3, 4, 10, 6, 5, 1], "Neutral": [12, 6, 8, 20, 13, 12, 4], "Somewhat-Bearish": [2, 0, 1, 2, 1, 3, 1], "Somewhat-Bullish": [13, 12, 6, 27, 14, 9, 3]};
 
     new Chart(document.getElementById('articlesChart'), {
       type: 'bar',
